@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-df=pd.read_csv('dataset.csv')
+df=pd.read_csv('spotify.csv')
 print(df.columns.tolist())
 #top 10 artists and top 10 genres data
 top_artists = df['artists'].value_counts().head(10)
