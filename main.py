@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 
 df=pd.read_csv('spotify.csv')
 print(df.columns.tolist())
+# print(df)
 #top 10 artists and top 10 genres data
 top_artists = df['artists'].value_counts().head(10)
 top_genres_pop = df.groupby('track_genre')['popularity'].mean().nlargest(10)
