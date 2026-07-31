@@ -23,6 +23,30 @@ plt.tight_layout()
 plt.savefig('graphs/artists_and_genre_distribution.png',dpi=300,bbox_inches='tight')
 plt.show()
 
+#happinness score
+sample_df = df.sample(700)
+plt.figure(figsize=(8, 5))
+plt.scatter(sample_df['danceability'],sample_df['valence'],color='teal')
+plt.title('Danceability vs Happiness', fontweight='bold')
+plt.xlabel('Danceability')
+plt.ylabel('Happiness Score')
+plt.grid(color='lightgray',linestyle='--')
+plt.tight_layout()
+plt.savefig('graphs/Danceability.png',dpi=300,bbox_inches='tight')
+plt.show()
+
+#Top 10 Artsists
+top_artists=df.groupby('artists')['popularity'].mean().nlargest(10)
+plt.figure(figsize=(10,5))
+plt.barh(top_artists.index[::-1],top_artists.values[::-1],color='teal')
+plt.title('Top 10 Popular Artists', fontweight='bold')
+plt.xlabel('Popularity Score')
+plt.ylabel('Artists Name')
+plt.tight_layout()
+plt.savefig('graphs/top_artists.png', dpi=300, bbox_inches='tight')
+plt.show()
+
+
 #explicit vs non explicit songs
 explicit_songs=df['explicit'].value_counts()
 plt.figure(figsize=(6,6))
@@ -54,12 +78,4 @@ plt.tight_layout()
 plt.savefig('graphs/top_tracks.png', dpi=300, bbox_inches='tight')
 plt.show()
 
-top_artists=df.groupby('artists')['popularity'].mean().nlargest(10)
-plt.figure(figsize=(10,5))
-plt.barh(top_artists.index[::-1],top_artists.values[::-1],color='teal')
-plt.title('Top 10 Popular Artists', fontweight='bold')
-plt.xlabel('Popularity Score')
-plt.ylabel('Artists Name')
-plt.tight_layout()
-plt.savefig('graphs/top_artists.png', dpi=300, bbox_inches='tight')
-plt.show()
+
