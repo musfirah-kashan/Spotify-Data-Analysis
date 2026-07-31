@@ -65,6 +65,7 @@ plt.title('Loudness Trend across Danceability Levels', fontweight='bold')
 plt.xlabel('Danceability Score')
 plt.ylabel('Average Loudness (dB)')
 plt.grid(color='gray',linestyle='--')
+plt.savefig('graphs/loudness_trends.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 #Top 10 tracks
