@@ -23,27 +23,6 @@ plt.tight_layout()
 plt.savefig('graphs/artists_and_genre_distribution.png',dpi=300,bbox_inches='tight')
 plt.show()
 
-# Audio Feature Trends Over Time 
-# df['duration_min']=df['duration_ms']/60000
-# yearly_trends=df.groupby('year')[['duration_min','energy','loudness']].mean()
-# fig,ax=plt.subplots(1,2,figsize=(14,5))
-# ax[0].plot(yearly_trends.index,yearly_trends['duration_min'],color='purple',linewidth=2)
-# ax[0].set_title('Average Song Duration Over Time', fontsize=12, fontweight='bold')
-# ax[0].set_xlabel('Release Year')
-# ax[0].set_ylabel('Duration(Mins)')
-# ax[0].grid(color='gray',linestyle='--')
-
-# ax[1].plot(yearly_trends.index,yearly_trends['energy'],color='orange',linewidth=2)
-# ax[1].set_title('Evolution of Energy Over Time',fontsize=12,fontweight='bold')
-# ax[1].set_xlabel('Release Year')
-# ax[1].set_ylabel('Average Energy Score')
-# ax[1].grid(color='gray',linestyle='--')
-
-# fig.suptitle('Spotify Audio Feature Trends Over Time', fontsize=14, fontweight='bold')
-# plt.tight_layout()
-# # plt.savefig('graphs/audio_feature_trends_over_time.png', dpi=300, bbox_inches='tight')
-# plt.show()
-
 #explicit vs non explicit songs
 explicit_songs=df['explicit'].value_counts()
 plt.figure(figsize=(6,6))
@@ -51,6 +30,17 @@ plt.pie(explicit_songs,labels=['Explicit','Non Explicit'],autopct='%1.1f%%', col
 plt.title('Explicit Content Distribution', fontweight='bold')
 plt.tight_layout()
 plt.savefig('graphs/explicit_vs_non-explicit_songs.png', dpi=300, bbox_inches='tight')
+plt.show()
+
+#loudness trends
+df['dance_round']=df['danceability'].round(1)
+line_data=df.groupby('dance_round')['loudness'].mean()
+plt.figure(figsize=(8, 4))
+plt.plot(line_data.index, line_data.values, color='purple', marker='o')
+plt.title('Loudness Trend across Danceability Levels', fontweight='bold')
+plt.xlabel('Danceability Score')
+plt.ylabel('Average Loudness (dB)')
+plt.grid(color='gray',linestyle='--')
 plt.show()
 
 #Top 10 tracks
