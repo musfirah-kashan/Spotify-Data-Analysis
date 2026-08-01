@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 
 df=pd.read_csv('spotify.csv')
 print(df.columns.tolist())
+df=df.dropna(subset=['track_id','artists', 'album_name', 'track_name', 'popularity', 'duration_ms', 'explicit', 'danceability', 'energy', 'key', 'loudness', 'mode', 'speechiness', 'acousticness', 'instrumentalness', 'liveness', 'valence', 'tempo', 'time_signature', 'track_genre'])
 # print(df)
 #top 10 artists and top 10 genres data
 top_artists = df['artists'].value_counts().head(10)
